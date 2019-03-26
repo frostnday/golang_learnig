@@ -5,6 +5,7 @@ import (
 	"fmt"
 )
 
+// mapとは連想配列みたいなやつ
 func init() {
 	fmt.Println("map")
 }
