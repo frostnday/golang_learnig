@@ -23,19 +23,40 @@ func (v *Vertex) Scale(i int) {
 	v.y = v.y * i
 }
 
-// func Area(v Vertex) int {
-// 	return v.x * v.y
-// }
+type Vertex3D struct {
+	// ここに他のstructを宣言することで継承したことになる
+	Vertex
+
+	// 追加も可能
+	z int
+}
+
+func (v Vertex3D) Area3D() int {
+	return v.x * v.y * v.z
+}
+
+func (v *Vertex3D) Scale3D(i int) {
+	v.x = v.x * i
+	v.y = v.y * i
+	v.z = v.z * i
+
+}
 
 // コンストラクターのような存在のもの
 // package.Newでstructを返却することがGoのお作法
-func New(x, y int) *Vertex {
-	return &Vertex{x, y}
+// func New(x, y int) *Vertex {
+// 	return &Vertex{x, y}
+// }
+
+func New(x, y, z int) *Vertex3D {
+	return &Vertex3D{Vertex{x, y}, z}
 }
 
 func main() {
-	v := New(3, 4)
+	v := New(3, 4, 5)
 	// fmt.Println(Area(v))
-	v.Scale(10)
+	v.Scale3D(10)
 	fmt.Println(v.Area())
+	fmt.Println(v.Area3D())
+
 }
